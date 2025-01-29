@@ -12,7 +12,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps} from 'vue'
 import type { Task } from '../types'
 import TaskCard from './TaskCard.vue'
 
