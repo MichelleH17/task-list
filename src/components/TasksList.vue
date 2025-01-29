@@ -1,14 +1,14 @@
 <template>
-  <section class="bg-blue-50 px-4 py-10">
+  <section class="px-4">
     <div class="container-xl lg:container m-auto">
-      <span v-if="tasks.length === 0" class="text-center">
+      <span v-if="tasks.length === 0" class="flex justify-center">
         No tasks found
       </span>
-      <span v-else class="text-3xl font-bold text-green-500 mb-6 text-center">
+      <span v-else class="text-3xl font-bold text-green-500 mb-6 flex justify-center">
         Total tasks: {{ tasks.length }}
       </span>
-      <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
-        <TaskCard v-for="task in tasks" :key="task.id" :task="task" />
+      <div class="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 justify-center">
+        <TaskCard v-for="task in tasks" :key="task.id" :task="task" @delete-task="deleteTask" />
       </div>
     </div>
   </section>
@@ -21,4 +21,12 @@ import TaskCard from './TaskCard.vue'
 defineProps<{
   tasks: Task[]
 }>()
+
+const emit = defineEmits<{
+  (event: 'delete-task', id: number): void
+}>()
+
+const deleteTask = (id: number) => {
+  emit('delete-task', id)
+}
 </script>
