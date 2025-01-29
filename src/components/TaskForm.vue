@@ -18,29 +18,33 @@
       </form>
     </div>
   </section>
-  <TasksList :tasks="tasks" />
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, defineEmits } from 'vue'
 import type { Task } from '../types'
-import TasksList from './TasksList.vue'
+
+const props = defineProps<{
+  tasks: Task[]
+}>()
+
+const emit = defineEmits<{
+  (event: 'add-task', task: Task): void
+}>()
 
 const newTask = ref('')
-const tasks = ref<Task[]>([])
 const hoursToComplete = ref(1)
 
 const addTask = () => {
   if (newTask.value.trim() !== '') {
     const task: Task = {
-      id: tasks.value.length + 1,
+      id: props.tasks.length + 1,
       name: newTask.value,
       hoursToComplete: hoursToComplete.value
     }
-    tasks.value.push(task)
+    emit('add-task', task)
     newTask.value = ''
     hoursToComplete.value = 1
   }
 }
-
 </script>
