@@ -37,7 +37,7 @@ import { ref } from 'vue'
 import type { Task } from '../types'
 
 const props = defineProps<{
-  tasks: Task[]
+  tasksLength: number
 }>()
 
 const emit = defineEmits<{
@@ -50,7 +50,7 @@ const hoursToComplete = ref(1)
 const addTask = () => {
   if (newTask.value.trim() !== '') {
     const task: Task = {
-      id: props.tasks.length + 1,
+      id: props.tasksLength + 1,
       name: newTask.value,
       hoursToComplete: hoursToComplete.value,
     }
