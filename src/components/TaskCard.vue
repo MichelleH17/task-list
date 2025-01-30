@@ -1,13 +1,18 @@
 <template>
-  <div class="flex gap-4 max-w-sm m-auto bg-blue-50 py-10 w-full sm:w-sm my-12 rounded-xl shadow">
+  <div class="flex max-w-sm m-auto bg-blue-50 p-4 w-full sm:w-sm my-12 rounded-xl shadow justify-between item">
     <p>{{ task.hoursToComplete }}h</p>
-    <p>{{ task.name }}</p>
-    <button @click="deleteTask" class="bg-blue-800 text-gray-50 px-2 p-0-5 rounded">x</button>
+    <div>
+      <p class="mb-2">{{ task.name }}</p>
+      <p>{{ dateCreated }}</p>
+    </div>
+    <button @click="deleteTask" class="bg-blue-800 text-gray-50 px-2 py-1 rounded self-start">x</button>
   </div>
 </template>
 
 <script setup lang="ts">
 import type { Task } from '../types'
+
+const dateCreated = new Date().toLocaleDateString()
 
 const props = defineProps<{
   task: Task
