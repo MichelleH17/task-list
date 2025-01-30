@@ -7,8 +7,13 @@
       <span v-else class="text-3xl font-bold text-green-500 mb-6 flex justify-center">
         Total tasks: {{ tasks.length }}
       </span>
-      <div class="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 justify-center">
-        <TaskCard v-for="task in tasks" :key="task.id" :task="task" @delete-task="deleteTask" />
+      <div class="mx-auto">
+        <div v-if="tasks.length === 1" class="grid grid-cols-1 justify-center">
+          <TaskCard :task="tasks[0]" @delete-task="deleteTask" />
+        </div>
+        <div v-else class="grid grid-cols-1 md:gap-3 lg:grid-cols-2 xl:grid-cols-3 justify-center">
+          <TaskCard v-for="task in tasks" :key="task.id" :task="task" @delete-task="deleteTask" />
+        </div>
       </div>
     </div>
   </section>
