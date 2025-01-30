@@ -1,5 +1,5 @@
 <template>
-  <div class="flex max-w-sm m-auto bg-blue-50 p-4 w-full sm:w-sm my-12 rounded-xl shadow justify-between item">
+  <div class="flex sm:max-w-sm m-auto bg-blue-50 p-4 w-full sm:w-sm my-12 rounded-xl shadow justify-between item">
     <p>{{ task.hoursToComplete }}h</p>
     <div>
       <p class="mb-2">{{ task.name }}</p>
