@@ -5,7 +5,7 @@
     <p>{{ task.hoursToComplete }}h</p>
     <div>
       <div>
-        <p v-if="!isEditing" class="mb-2">{{ task.name }}</p>
+        <p v-if="!isEditing" class="mb-2">{{ truncate(task.name, 10) }}</p>
         <input v-else type="text" v-model="editedTaskName" class="bg-white border border-gray-200 rounded-md p-1 mb-3" >
         <p>{{ dateCreated }}</p>
       </div>
@@ -62,5 +62,9 @@ const saveEdit = () => {
     emit('update-task', { ...props.task, name: editedTaskName.value })
     isEditing.value = false
   }
+}
+
+const truncate = (text: string, length: number) => {
+  return text.length > length ? text.substring(0, length) + '...' : text
 }
 </script>
