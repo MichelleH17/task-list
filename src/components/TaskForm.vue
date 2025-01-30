@@ -11,8 +11,8 @@
         <label for="hoursToComplete" class="font-semibold">
           Hours to complete
         </label>
-        <input type="number" id="hoursToComplete" name="hoursToComplete" v-model="hoursToComplete" min="1" class="bg-white border border-gray-200 rounded-md p-1 mb-6" />
-        <button type="submit" class="bg-green-500 px-5 py-2 rounded-3xl text-gray-50 hover:bg-green-600">
+        <input type="number" id="hoursToComplete" name="hoursToComplete" v-model="hoursToComplete" :min="1" class="bg-white border border-gray-200 rounded-md p-1 mb-6" />
+        <button type="submit" class="bg-green-500 px-5 py-2 rounded-xl text-gray-50 hover:bg-green-600 font-semibold">
           Add Task
         </button>
       </form>
