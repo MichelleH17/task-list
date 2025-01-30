@@ -10,14 +10,17 @@
         <p>{{ dateCreated }}</p>
       </div>
     </div>
-    <div class="flex gap-3">
+    <div v-if="!isEditing" class="flex gap-3">
       <button
-        v-if="!isEditing"
         @click="startEditing"
         class="bg-blue-800 text-gray-50 px-2 py-1 rounded self-start"
       >
         Edit
       </button>
+      <button @click="deleteTask" class="bg-red-800 text-gray-50 px-2 py-1 rounded self-start">
+        x
+      </button>
+    </div>
       <button
         v-else
         @click="saveEdit"
@@ -25,10 +28,6 @@
       >
         Save
       </button>
-      <button @click="deleteTask" class="bg-red-800 text-gray-50 px-2 py-1 rounded self-start">
-        x
-      </button>
-    </div>
   </div>
 </template>
 
