@@ -1,6 +1,7 @@
 <template>
   <section class="px-4">
     <div class="container-xl lg:container m-auto">
+      <p v-if="lastTaskName" class="text-center text-green-500 mb-6">New task created: {{ lastTaskName }}</p>
       <span v-if="tasks.length === 0" class="flex justify-center">
         No tasks found
       </span>
@@ -24,7 +25,8 @@ import type { Task } from '../types'
 import TaskCard from './TaskCard.vue'
 
 defineProps<{
-  tasks: Task[]
+  tasks: Task[],
+  lastTaskName: string
 }>()
 
 const emit = defineEmits<{
